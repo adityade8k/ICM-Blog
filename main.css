@@ -1,0 +1,296 @@
+/*  never remove this */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#appCont {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.ICM {
+    position: relative;
+    top: 20vh;
+    display: flex;
+    font-size: 12rem;
+    color: #333;
+    gap: 0.5rem;
+    font-family: joc, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* Keyframes for the falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh);
+        /* Start outside the top of the screen */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* End at the current position */
+    }
+}
+
+/* Apply the animation to #I, #C, and #M */
+#I,
+#C,
+#M {
+    animation: fall 1s ease-out;
+    /* Animation duration and easing */
+    animation-fill-mode: forwards;
+    /* Retain the final state of the animation */
+}
+
+/* Add delays to stagger the animations */
+#I {
+    animation-delay: 0s;
+
+    /* Start immediately */
+}
+
+#C {
+    animation-delay: 0;
+    /* Start after 0.2 seconds */
+}
+
+#M {
+    animation-delay: 0;
+    /* Start after 0.4 seconds */
+}
+
+.blog-header {
+    margin-top: 15%;
+    display: flex;
+    justify-content: space-between;
+    font-family: "amifer", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 10vh;
+    rotate: -2deg;
+}
+
+/* Header */
+.blog-about {
+    width: 40%;
+    font-size: 1.5rem;
+    color: rgb(153, 153, 153);
+    display: flex;
+    align-items: center;
+}
+
+.session {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.session.font0 {
+    font-family: playwrite-cc-dk-loopet, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.session.font1 {
+    font-family: cofo-raffine, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.session.font2 {
+    font-family: lores-9-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.session.font3 {
+    font-family: lores-9-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.session.font4 {
+    font-family: lores-9-minus-narrow, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.session.font5 {
+    font-family: lores-22-bold-oakland, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.session.font6 {
+    font-family: alta-california, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Tile Container */
+.tile-container {
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    gap: 1em;
+    justify-content: center;
+}
+
+/* Tile */
+.tile {
+  position: relative;
+  height: 20rem;              /* fixed height */
+  background-size: 100% auto; /* image width = div width */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+
+.tile:hover {
+    transform: scale(1.05);
+}
+
+.tile h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Semi-transparent background for readability */
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.article {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+}
+
+p {
+    margin: 0;
+}
+
+.article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.article p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.half-para {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.half-para img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.half-para p {
+    flex: 1;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.image-wrapper img {
+    width: 100%;
+    /* Takes up as much width as a paragraph */
+    height: auto;
+    /* Maintains aspect ratio */
+    border-radius: 0.5rem;
+}
+
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup */
+.popup {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    overflow-y: auto;
+    max-height: 100%;
+    font-family: "amifer", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.popup p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.popup img {
+    width: 90%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

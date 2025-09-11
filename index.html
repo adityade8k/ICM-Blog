@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICM Blog</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/yin8seu.css">
+    <script src="content.js"></script>
+</head>
+
+<body>
+    <div id="appCont">
+
+        <div class="ICM">
+            <div id="I">I</div>
+            <div id="C">C</div>
+            <div id="M">M</div>
+        </div>
+
+        <div class="blog-header">
+            <div class="session font0">Fall 2025</div>
+            <div class="blog-about">
+                A repositrory of my explorations in the ICM class.
+            </div>
+
+        </div>
+
+        <div class="tile-container" id="tile-container">
+            <!-- Tiles will be dynamically inserted here -->
+        </div>
+
+        <!-- Static Popup Overlay -->
+        <div class="popup-overlay" id="popup-overlay" style="display: none;">
+            <div class="popup" id="popup">
+                <button class="close-button" id="close-button">×</button>
+                <div class="popup-content" id="popup-content">
+                    <!-- Popup content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const sessionElement = $(".session");
+            const fontClasses = ["font0", "font1", "font2", "font3", "font4", "font5", "font6"];
+            let previousFontClass = "font0"; // Start with the default font class
+
+            function updateFontClass() {
+                // Filter out the previous font class to avoid repetition
+                const availableFonts = fontClasses.filter(font => font !== previousFontClass);
+
+                // Select a random font class from the available fonts
+                const randomFontClass = availableFonts[Math.floor(Math.random() * availableFonts.length)];
+
+                // Remove the previous font class and add the new one
+                sessionElement.removeClass(previousFontClass).addClass(randomFontClass);
+
+                // Update the previous font class
+                previousFontClass = randomFontClass;
+            }
+
+            // Call updateFontClass every 2 seconds
+            setInterval(updateFontClass, 2000);
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Randomize rotation and font color for #I, #C, and #M
+            const letters = ["#I", "#C", "#M"];
+            letters.forEach((id) => {
+                const randomAngle = Math.floor(Math.random() * 61) - 30; // Random angle between -30 and 30const randomAngle = Math.floor(Math.random() * 91); // Random angle between 0 and 90
+                const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random hex color
+
+                // Apply random rotation and color before animation starts
+                console.log(id, randomAngle, randomColor);
+                $(id).css({
+                    rotate: `${randomAngle}deg`, // Apply random rotation
+                    color: randomColor, // Apply random color
+                });
+
+                // Add the falling animation after rotation is applied
+                $(id).css({
+                    animation: "fall 1s ease-out forwards", // Falling animation
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Render tiles for each article
+            data.forEach((article) => {
+                const tile = $("<div>")
+                    .addClass("tile")
+                    .css("background-image", `url(${article.image})`);
+
+                // Add article title
+                const title = $("<h3>").text(article.title);
+                tile.append(title);
+
+                // Add click event to open popup
+                tile.on("click", function () {
+                    openPopup(article);
+                });
+
+                $("#tile-container").append(tile);
+            });
+
+            // Function to open the popup
+            function openPopup(article) {
+                const popupContent = $("#popup-content");
+                popupContent.empty(); // Clear previous content
+
+                // Add article title
+                const title = $("<h2>").text(article.title);
+                popupContent.append(title);
+
+                // Optional: tiny helper to keep links safe (http/https only)
+                function safeHref(u) {
+                    try {
+                        const url = new URL(u, window.location.origin);
+                        return /^https?:$/.test(url.protocol) ? url.href : "#";
+                    } catch {
+                        return "#";
+                    }
+                }
+
+                article.body.forEach((content) => {
+                    const type = content.type;
+
+                    if (type === "paragraph") {
+                        popupContent.append($("<p>").text(content.text || ""));
+                        return;
+                    }
+
+                    if (type === "link") {
+                        const href = safeHref(content.url || "");
+                        const label = content.text || content.url || "Link";
+                        const a = $("<a>")
+                            .attr({ href, target: "_blank", rel: "noopener noreferrer" })
+                            .text(label);
+
+                        // wrap in <p> for consistent spacing
+                        popupContent.append($("<p>").append(a));
+                        return;
+                    }
+
+                    if (type === "half_para_left" || type === "half_para_right") {
+                        const halfPara = $("<div>").addClass("half-para").addClass(type);
+
+                        const text = $("<p>").text(content.text || "");
+                        const src = content.img || content.image;
+                        if (src) {
+                            const img = $("<img>")
+                                .attr("src", src)
+                                .attr("alt", content.alt || "Image");
+                            if (type === "half_para_left") {
+                                halfPara.append(img, text);
+                            } else {
+                                halfPara.append(text, img);
+                            }
+                        } else {
+                            halfPara.append(text);
+                        }
+
+                        popupContent.append(halfPara);
+                        return;
+                    }
+
+                    // explicit image type support (optional)
+                    if (type === "image") {
+                        const src = content.img || content.image;
+                        if (src) {
+                            popupContent.append(
+                                $("<img>")
+                                    .attr("src", src)
+                                    .attr("alt", content.alt || "Image")
+                                    .addClass("full-width-image")
+                            );
+                        }
+                        return;
+                    }
+
+                    // Fallbacks for objects without a clear type
+                    if (content.img || content.image) {
+                        popupContent.append(
+                            $("<img>")
+                                .attr("src", content.img || content.image)
+                                .attr("alt", content.alt || "Image")
+                                .addClass("full-width-image")
+                        );
+                    } else if (typeof content.text === "string") {
+                        popupContent.append($("<p>").text(content.text));
+                    }
+                });
+
+
+                // Show the popup
+                $("#popup-overlay").fadeIn();
+
+                // Add close functionality
+                $("#close-button").off("click").on("click", function () {
+                    $("#popup-overlay").fadeOut();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
