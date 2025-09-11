@@ -1,7 +1,7 @@
 const data = [
   {
     title: "Week 1: Why ICM?",
-    image: "/images/test.png",
+    image: "/images/download.png",
     body: [
       {
         type: "paragraph",
