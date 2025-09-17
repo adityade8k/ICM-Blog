@@ -33,5 +33,39 @@ const data = [
         url: "https://editor.p5js.org/ad7944/full/_Aq95weqL"
       }
     ]
+  }, {
+    title: "Week 2: Relationships",
+    image: "/images/week2.png",
+    body: [
+      {
+        type: "paragraph",
+        text: `After reading the prompts, all I could think of was how memes go viral. I wanted to create a sketch where elements affect their immediate neighbors, leading to a chain reaction spreading across the composition. Much like how a tweet goes viral, emanating from one user and spreading across the user base.`
+      },
+      {
+        type: "paragraph",
+        text: `My implementation of this idea has been explored in part and in whole several times and draws on several existing concepts. This is a cellular automaton approach with random seeding and probabilistic spreading on a two-dimensional array (a Coding Train staple). As I have demonstrated before, I prefer the object-oriented approach, and that was the basis of how I structured the code.`
+      },
+      {
+        type: "paragraph",
+        text: `Each cell in the lattice stores an active/inactive state. Through random seeding or a mouse click, a cell becomes active. On activation, after an offset time, it will activate some of its neighbors. This randomization of neighbor selection is perhaps what I spent the most time refining.`
+      },
+      {
+        type: "paragraph",
+        text: `I tried three solutions. The first one did not give the effect I wanted, and the second one was too inefficient, leading to my sketch freezing up. For my current implementation, I learned about the Fisher–Yates shuffle, which made my sketch much better.`
+      },
+      {
+        type: "paragraph",
+        text: `One cell property that I added later was "time since last active." This allows the cells to change color over time. Also, this was the first time I used HSL instead of RGB. I was team RGB all along, but I think HSL has a lot of potential too.`
+      },
+      {
+        type: "paragraph",
+        text: `My sketch has five main variables that control the outcome: How long does a cell stay active? After how long of being activated does a cell activate its neighbors? After deactivating, how long must a cell wait before it can activate again? How often is a randomly selected cell activated?`
+      },
+       {
+        type: "link",
+        text: `This weeks assignment`,
+        url: "https://editor.p5js.org/ad7944/sketches/sCPQrJcjj"
+      }
+    ]
   }
 ];
