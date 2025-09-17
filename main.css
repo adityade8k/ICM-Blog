@@ -136,22 +136,24 @@
 .tile-container {
     margin-top: 5vh;
     display: grid;
-    grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: repeat(3, 33.3333%);
     gap: 1em;
     justify-content: center;
 }
 
 /* Tile */
 .tile {
-  position: relative;
-  height: 20rem;              /* fixed height */
-  background-size: 100% auto; /* image width = div width */
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+    position: relative;
+    height: 20rem;
+    /* fixed height */
+    background-size: 100% auto;
+    /* image width = div width */
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 
@@ -165,7 +167,8 @@
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px); /* Semi-transparent background for readability */
+    backdrop-filter: blur(5px);
+    /* Semi-transparent background for readability */
     color: #fff;
     text-align: center;
     padding: 0.5rem;
@@ -293,4 +296,39 @@ p {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+@media (max-width: 500px) {
+
+    #appCont {
+        width: 100%;
+    }
+
+    .blog-header {
+        margin-top: 45%;
+    }
+
+    .session {
+        font-size: 2.5rem;
+    }
+
+    .blog-about {
+        font-size: 1.3rem;
+    }
+
+    .ICM {
+        font-size: 10rem;
+    }
+
+    .tile {
+        height: 45vw;
+    }
+
+    .popup {
+        height: 90vh;
+    }
+
+    .tile-container {
+        grid-template-columns: repeat(2, 50%);
+    }
 }
