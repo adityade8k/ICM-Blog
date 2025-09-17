@@ -39,7 +39,7 @@ const data = [
     body: [
       {
         type: "paragraph",
-        text: `After reading the prompts, all I could think of was how memes go viral. I wanted to create a sketch where elements affect their immediate neighbors, leading to a chain reaction spreading across the composition. Much like how a tweet goes viral, emanating from one user and spreading across the user base.`
+        text: `After reading the prompts, all I could think of was how memes go viral. I wanted to create a sketch where elements affect their immediate neighbours, leading to a chain reaction spreading across the composition. Much like how a tweet goes viral, emanating from one user and spreading across the user base.`
       },
       {
         type: "paragraph",
@@ -47,7 +47,7 @@ const data = [
       },
       {
         type: "paragraph",
-        text: `Each cell in the lattice stores an active/inactive state. Through random seeding or a mouse click, a cell becomes active. On activation, after an offset time, it will activate some of its neighbors. This randomization of neighbor selection is perhaps what I spent the most time refining.`
+        text: `Each cell in the lattice stores an active/inactive state. Through random seeding or a mouse click, a cell becomes active. On activation, after an offset time, it will activate some of its neighbours. This randomization of neighbour selection is perhaps what I spent the most time refining.`
       },
       {
         type: "paragraph",
@@ -59,7 +59,7 @@ const data = [
       },
       {
         type: "paragraph",
-        text: `My sketch has five main variables that control the outcome: How long does a cell stay active? After how long of being activated does a cell activate its neighbors? After deactivating, how long must a cell wait before it can activate again? How often is a randomly selected cell activated?`
+        text: `My sketch has five main variables that control the outcome: How long does a cell stay active? After how long of being activated does a cell activate its neighbours? After deactivating, how long must a cell wait before it can activate again? How often is a randomly selected cell activated?`
       },
        {
         type: "link",
