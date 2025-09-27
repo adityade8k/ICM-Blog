@@ -67,5 +67,68 @@ const data = [
         url: "https://editor.p5js.org/ad7944/sketches/sCPQrJcjj"
       }
     ]
+  },
+  {
+    title: "Week 3: Back to the Basics",
+    image: "/images/week3.png",
+    body: [
+      {
+        type: "paragraph",
+        text: `For this week's assignment I worked in a team with Lingwu. My approach was shaped by two constraints: first, since we are not using object-oriented programming in class, I decided not to use it in my sketch; second, I wanted to introduce Lingwu to my methods of creating p5.js sketches.`
+      },
+      {
+        type: "paragraph",
+        text: `Not using OOP meant handling everything with functions. I needed a way to implement oscillation in my sketch, so I used trigonometric functions. I don’t use this method often, and it was refreshing to rediscover techniques I hadn’t used in a while.`
+      },
+      {
+        type: "paragraph",
+        text: `Many of my p5 sketches involve building a "base" element, then repeating that to create a parent object, and then repeating that again. This approach can generate a lot of complexity with just a few layers. The use of offsets paired with trigonometric functions can create interesting movement in the sketch.`
+      },
+      {
+        type: "paragraph",
+        text: `I guided Lingwu by setting short, achievable goals. We started by rendering a trapezoid. The next challenge was to make the shorter parallel side oscillate between two positions. This turned out to be more complicated than I expected, and trigonometric functions ultimately made it possible.`
+      },
+      {
+        type: "paragraph",
+        text: `Once the trapezoid logic was working, we rendered several trapezoids in a ring and then layered multiple rings with an offset to create the final effect. Lingwu made his own modification by allowing the user to change the color scheme by clicking on different parts of the screen. His handling of these "modes" reminded me of my own approach in my early days of coding.`
+      },
+      {
+        type: "link",
+        text: `This weeks assignment`,
+        url: "https://editor.p5js.org/ad7944/sketches/XksmfuloO"
+      }
+    ]
   }
 ];
+
+data.push({
+  title: "Week 4: New Grid, who this?",
+  image: "/images/week4.png",
+  body: [
+    {
+      type: "paragraph",
+      text: `When I read the worksheet prompt about looping without using for or while, my first thought was: I always reach for the for loop. I set up an i, run it through, and iterate—that’s my default muscle memory. This time I had to break it.`
+    },
+    {
+      type: "paragraph",
+      text: `I ended up revisiting recursion. It’s something I’ve known about for a while, but I’ve never been fully confident using it. In this sketch, I built a grid purely through recursive calls. That was exciting because creating grids is the foundation of how I teach p5.js—lay down a lattice, place elements in cells, and then either synchronize them or randomize them.`
+    },
+    {
+      type: "paragraph",
+      text: `Of course, I couldn’t fully replicate my usual style. Normally I’d add randomization, but without objects I couldn’t easily slot in my preferred randomness patterns. That limitation stood out—though I’m already thinking of ways around it, like weaving randomness directly into the recursive branching.`
+    },
+    {
+      type: "paragraph",
+      text: `One thing I noticed quickly: the recursive version isn’t very efficient. Once the resolution goes beyond five, six, seven divisions, the sketch starts to freeze. That was disappointing because, conceptually, recursion feels cleaner. Still, the performance ceiling makes it impractical at scale.`
+    },
+    {
+      type: "paragraph",
+      text: `What I’m taking away is that recursion offers a different way of thinking about grids—not just a mechanical substitution for a for loop, but a structural shift where each cell leads to the next, call by call. I also explored trigonometric functions further in this sketch.`
+    },
+    {
+        type: "link",
+        text: `This weeks assignment`,
+        url: "https://editor.p5js.org/ad7944/sketches/zXeEWMm3W"
+      }
+  ]
+});

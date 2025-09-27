@@ -139,6 +139,7 @@
     grid-template-columns: repeat(3, 33.3333%);
     gap: 1em;
     justify-content: center;
+    margin-bottom: 5vh;
 }
 
 /* Tile */
@@ -330,5 +331,6 @@ p {
 
     .tile-container {
         grid-template-columns: repeat(2, 50%);
+        margin-bottom: 10vh;
     }
 }
